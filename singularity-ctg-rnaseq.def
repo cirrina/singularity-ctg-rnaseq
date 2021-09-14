@@ -16,9 +16,6 @@ From: centos:centos7.6.1810
 %post
     yum -y install epel-release wget which nano curl zlib-devel
     yum -y groupinstall "Development Tools"
-    yum -y install tbb ## https://www.metagenomics.wiki/tools/bowtie2/install/libtbb-so-2
-    ## yum -y install libncurses5 ##
-    yum -y install lynx
 
     mkdir -p /opt/software
 
@@ -33,34 +30,54 @@ From: centos:centos7.6.1810
     /opt/software/conda/bin/conda install -y -c conda-forge mamba
 
     /opt/software/conda/bin/mamba create -p /opt/software/uroscan_env -y "python>=3.6" \
-      rsem=1.3.0 \
-      star=2.5.3a \
-      sambamba=0.6.8 \
-      r-base=3.4.1 \
-      salmon=0.13.1 \
+      star=2.7.6a \
+      bowtie2=2.4.2 \
+      bcl2fastq=2.19.0 \
+      salmon \
+      sambamba \
+      samtools \
       qualimap \
-      bowtie2 \
       rseqc \
       picard \
       fastqc \
       multiqc \
-      samtools \
       fastq-screen \
-      bcl2fastq=2.19.0 \
+      r-base \
+      r-base-dev \
       r-devtools \
-      r-knitr=1.16 \
-      vladsaveliev::r-kableextra=0.9.0 \
-      r-jsonlite=1.4 \
-      r-dplyr=0.7.4 \
-      r-reshape=0.8.6 \
-      r-ggplot2=2.2.0 \
-      r-cowplot=0.9.1 \
-      r-ranger
+      r-dplyr \
+      r-knitr \
+      r-reshape \
+      r-reshape2 \
+      r-tidyr \
+      r-tidyverse \
+      r-kableextra \
+      r-jsonlite \
+      r-gridExtra \
+      r-rmarkdown \
+      r-knitr \
+      r-ggplot2 \
+      r-pheatmap \
+      r-cowplot \
+      r-plotly \
+      r-ranger \
+      r-optparse \
+      r-parallell \
+      r-rcolorbrewer \
+      r-rhdr5 \
+      r-poiclaclu \
+      bioconductor-biocparallel \
+      bioconductor-tximport \
+      bioconductor-biomart \
+      bioconductor-deseq2 \
+      bioconductor-biobase \
+      bioconductor-vsn \
+      bioconductor-hexbin \
+      bioconductor-glmpca \
+      bioconductor-sva \
+      bioconductor-summarizedexperiment \
+      bioconductor-dupradar
 
-# r-ranger=0.7.0 \
-  #bowtie2=2.3.3.1 \
-  #salmon=0.13.1 \
-      #
 
 ## featureCounts NOT included
 
