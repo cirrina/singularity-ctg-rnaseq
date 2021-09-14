@@ -34,6 +34,7 @@ From: centos:centos7.6.1810
       bowtie2=2.4.2 \
       bcl2fastq=2.19.0 \
       salmon \
+      subread \
       sambamba \
       samtools \
       qualimap \
@@ -43,7 +44,6 @@ From: centos:centos7.6.1810
       multiqc \
       fastq-screen \
       r-base \
-      r-base-dev \
       r-devtools \
       r-dplyr \
       r-knitr \
@@ -62,9 +62,7 @@ From: centos:centos7.6.1810
       r-plotly \
       r-ranger \
       r-optparse \
-      r-parallell \
       r-rcolorbrewer \
-      r-rhdr5 \
       r-poiclaclu \
       bioconductor-biocparallel \
       bioconductor-tximport \
@@ -72,15 +70,11 @@ From: centos:centos7.6.1810
       bioconductor-deseq2 \
       bioconductor-biobase \
       bioconductor-vsn \
-      bioconductor-hexbin \
-      bioconductor-glmpca \
+      r-hexbin \
+      r-glmpca \
       bioconductor-sva \
       bioconductor-summarizedexperiment \
       bioconductor-dupradar
-
-
-## featureCounts NOT included
-
 
 
     source /opt/software/conda/bin/activate /opt/software/uroscan_env
