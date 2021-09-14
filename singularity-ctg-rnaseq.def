@@ -87,7 +87,7 @@ From: centos:centos7.6.1810
     cd /opt/software
 
 %runscript
-    echo "Welcome to the Uroscan container"
+    echo "Welcome to the ctg-rnaseq container"
     #exec virsorter "$@"
     exec R --slave -e "sessionInfo()"
     exec R --slave -e "installed.packages()"
