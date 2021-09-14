@@ -1,0 +1,1 @@
+Main singularity container for use with ctg-rnaseq pipeline. For the uroscan pipeline - some sofwares and processeds will need contianers with alternative versions of softwares 
