@@ -86,6 +86,7 @@ From:nfcore/base
 
     # source /opt/software/conda/bin/activate /opt/software/ctg-rnaseq_env
     # conda /opt/software/conda/bin/activate /opt/software/ctg_rnaseq_env
+    conda init bash
     conda activate /opt/software/ctg_rnaseq_env
     cd /opt/software
 
