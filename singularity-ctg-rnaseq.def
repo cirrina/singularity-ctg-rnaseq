@@ -1,5 +1,5 @@
-Bootstrap: docker
-From: centos:centos7.6.1810
+Bootstrap:docker
+From:nfcore/base
 
 
 %environment
@@ -14,8 +14,8 @@ From: centos:centos7.6.1810
     # salmon /opt/software/
 
 %post
-    yum -y install epel-release wget which nano curl zlib-devel
-    yum -y groupinstall "Development Tools"
+    apt -y install epel-release wget which nano curl zlib-devel
+    apt -y groupinstall "Development Tools"
 
     mkdir -p /opt/software
 
