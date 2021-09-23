@@ -10,7 +10,7 @@ From:nfcore/base
 %files
     # qualimap_v2.2.1 /opt/software/
     # picard.jar /opt/software/
-    bladderreport /opt/software/
+    # bladderreport /opt/software/
     # salmon /opt/software/
 
 %post
