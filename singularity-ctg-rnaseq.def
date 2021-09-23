@@ -16,7 +16,7 @@ From:nfcore/base
 %post
     # apt -y install epel-release wget which nano curl zlib-devel
     # apt -y groupinstall "Development Tools"
-    apt -y install libz-dev build-essential gettext cmake libxml2-dev libcurl4-openssl-dev libssl-dev make libbz2-dev libboost-dev sudo tree
+    apt -y install libz-dev build-essential gettext cmake libxml2-dev libcurl4-openssl-dev libssl-dev libbz2-dev libboost-dev sudo tree
 
 
     mkdir -p /opt/software
