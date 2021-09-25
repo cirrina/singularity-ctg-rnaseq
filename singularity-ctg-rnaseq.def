@@ -4,6 +4,7 @@ From:nfcore/base
 
 %environment
     export PATH=$PATH:/opt/software/conda/bin/
+    source /opt/software/conda/bin/activate /opt/software/ctg_rnaseq_env
     # source /opt/software/conda/bin/activate /opt/software/ctg_rnaseq_env
 
 
