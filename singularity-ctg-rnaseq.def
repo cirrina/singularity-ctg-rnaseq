@@ -3,14 +3,7 @@ From:nfcore/base
 
 
 %environment
-<<<<<<< HEAD
     PATH=/opt/:/usr/bin:/usr/local/bin:/opt/conda/envs/bladderreport/bin/:$PATH
-=======
-    export PATH=$PATH:/opt/software/conda/bin/
-    source /opt/software/conda/bin/activate /opt/software/ctg_rnaseq_env
-    # source /opt/software/conda/bin/activate /opt/software/ctg_rnaseq_env
-
->>>>>>> 196984372a386a97baa555495b8de99328f9e68a
 
 %files
   environment.yml
