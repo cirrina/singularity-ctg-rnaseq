@@ -3,85 +3,21 @@ From:nfcore/base
 
 
 %environment
-    export PATH=$PATH:/opt/software/conda/bin/
-    # source /opt/software/conda/bin/activate /opt/software/ctg_rnaseq_env
-
+    PATH=/opt/:/usr/bin:/usr/local/bin:/opt/conda/envs/bladderreport/bin/:$PATH
 
 %files
-    # qualimap_v2.2.1 /opt/software/
-    # picard.jar /opt/software/
-    # bladderreport /opt/software/
-    # salmon /opt/software/
+  environment.yml
 
 %post
-    # apt -y install epel-release wget which nano curl zlib-devel
-    # apt -y groupinstall "Development Tools"
 
     rm -rf /var/lib/apt/lists/*
     apt -y clean
     apt-get -y update
 
-    apt-get -y install locales apt-utils curl libz-dev build-essential gettext cmake libxml2-dev make libcurl4-openssl-dev libssl-dev libbz2-dev libboost-dev sudo tree
+    apt-get -y install locales apt-utils curl libz-dev build-essential gettext cmake libxml2-dev make libcurl4-openssl-dev libssl-dev libbz2-dev libboost-dev libtbb2 sudo tree
 
 
-    mkdir -p /opt/software
-
-    cd /opt/software
-    curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    sh ./Miniconda3-latest-Linux-x86_64.sh -p /opt/software/conda -b
-
-    /opt/software/conda/bin/conda config --add channels defaults
-    /opt/software/conda/bin/conda config --add channels conda-forge
-    /opt/software/conda/bin/conda config --add channels bioconda
-    /opt/software/conda/bin/conda config --add channels dranew
-    /opt/software/conda/bin/conda install -y -c conda-forge mamba
-
-    /opt/software/conda/bin/mamba create -p /opt/software/ctg_rnaseq_env -y "python>=3.6" \
-      star=2.7.6a \
-      bowtie2=2.4.2 \
-      bcl2fastq=2.19.0 \
-      salmon \
-      subread \
-      sambamba \
-      samtools \
-      qualimap \
-      rseqc \
-      picard \
-      fastqc \
-      multiqc \
-      fastq-screen \
-      r-base \
-      r-devtools \
-      r-dplyr \
-      r-knitr \
-      r-reshape \
-      r-reshape2 \
-      r-tidyr \
-      r-tidyverse \
-      r-kableextra \
-      r-jsonlite \
-      r-gridExtra \
-      r-rmarkdown \
-      r-knitr \
-      r-ggplot2 \
-      r-pheatmap \
-      r-cowplot \
-      r-plotly \
-      r-ranger \
-      r-optparse \
-      r-rcolorbrewer \
-      r-poiclaclu \
-      bioconductor-biocparallel \
-      bioconductor-tximport \
-      bioconductor-biomart \
-      bioconductor-deseq2 \
-      bioconductor-biobase \
-      bioconductor-vsn \
-      r-hexbin \
-      r-glmpca \
-      bioconductor-sva \
-      bioconductor-summarizedexperiment \
-      bioconductor-dupradar
+    opt/conda/bin/conda env create -f environment.yml
 
 
     # source /opt/software/conda/bin/activate /opt/software/ctg-rnaseq_env
@@ -89,13 +25,9 @@ From:nfcore/base
     apt-get -y clean
     rm -rf /var/lib/apt/lists/*
 
-    # conda init bash # Modifies .bashrc on your host machine
-    # source .bashrc # Loads modified .bashrc
-    # export LC_ALL=C.UTF-8 # Sets locale to UTF-8
-    # export LANG=C.UTF-8 # Sets locale to UTF-8
-    # conda activate /opt/software/ctg_rnaseq_env
-    cd /opt/software
-
+%test
+    #!/bin/sh
+    exec R --slave -e "installed.packages()"
 
 %runscript
     echo "Welcome to the ctg-rnaseq container"
