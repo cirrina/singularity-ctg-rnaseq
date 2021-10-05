@@ -3,39 +3,64 @@ From:nfcore/base
 
 
 %environment
-    PATH=/opt/:/usr/bin:/usr/local/bin:/opt/conda/envs/bladderreport/bin/:$PATH
+    PATH=/opt/:/usr/bin:/usr/local/bin:/opt/conda/envs/ctg_rnaseq/bin/:$PATH
+    source /opt/software/conda/bin/activate /opt/software/uroscan_env
 
 %files
-  environment.yml
+  # environment.yml
 
 %post
+  rm -rf /var/lib/apt/lists/*
+  apt -y clean
+  apt-get -y update
 
-    rm -rf /var/lib/apt/lists/*
-    apt -y clean
-    apt-get -y update
-
-    apt-get -y install locales apt-utils curl libz-dev build-essential gettext cmake libxml2-dev make libcurl4-openssl-dev libssl-dev libbz2-dev libboost-dev libtbb2 sudo tree
-
-
-    opt/conda/bin/conda env create -f environment.yml
+  apt-get -y install locales apt-utils curl libz-dev build-essential gettext cmake libxml2-dev make libcurl4-openssl-dev libssl-dev libbz2-dev libboost-dev libtbb2 sudo tree
 
 
-    # source /opt/software/conda/bin/activate /opt/software/ctg-rnaseq_env
-    # conda /opt/software/conda/bin/activate /opt/software/ctg_rnaseq_env
-    apt-get -y clean
-    rm -rf /var/lib/apt/lists/*
+  # install conda
+  mkdir -p /opt/software
+  cd /opt/software
+  curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  sh ./Miniconda3-latest-Linux-x86_64.sh -p /opt/software/conda -b
+
+  ## set conda channels
+  /opt/software/conda/bin/conda config --add channels defaults
+  /opt/software/conda/bin/conda config --add channels conda-forge
+  /opt/software/conda/bin/conda config --add channels bioconda
+  /opt/software/conda/bin/conda config --add channels dranew
+  # install mamba
+  /opt/software/conda/bin/conda install -y -c conda-forge mamba
+
+  ## build mamba environment
+  # opt/conda/bin/conda env create -f environment.yml
+  /opt/software/conda/bin/mamba create -p /opt/software/rnaseq_env -y "python>=3.6" \
+      - star=2.7.6a
+      - bowtie2=2.4.2
+      - bcl2fastq=2.19.0
+      - salmon=1.5.2
+      - subread=2.0.1
+      - sambamba=0.8.1
+      - samtools=1.5
+
+
+
+  source /opt/software/conda/bin/activate /opt/software/rnaseq_env
+  # conda /opt/software/conda/bin/activate /opt/software/rnaseq_env
+  apt-get -y clean
+  rm -rf /var/lib/apt/lists/*
 
 %test
-    #!/bin/sh
-    exec R --slave -e "installed.packages()"
+  #!/bin/sh
+  exec R --slave -e "installed.packages()"
+
 
 %runscript
-    echo "Welcome to the ctg-rnaseq container"
-    #exec virsorter "$@"
-    exec R --slave -e "sessionInfo()"
-    exec R --slave -e "installed.packages()"
-    exec STAR --version
-    # exec salmon --version
-    # exec bowtie2 --version
-    exec rsem-calculate-expression --version
-    exec geneBody_coverage.py --version
+  echo "Welcome to the ctg-rnaseq container"
+  #exec virsorter "$@"
+  exec R --slave -e "sessionInfo()"
+  exec R --slave -e "installed.packages()"
+  exec STAR --version
+  # exec salmon --version
+  # exec bowtie2 --version
+  exec rsem-calculate-expression --version
+  exec geneBody_coverage.py --version
