@@ -6,48 +6,48 @@ channels:
   - defaults
   - r
 dependencies:
-  - star=2.7.6a \
--   bowtie2=2.4.2 \
--   bcl2fastq=2.19.0 \
--   salmon \
--   subread \
--   sambamba \
--   samtools \
--   qualimap \
--   rseqc \
--   picard \
--   fastqc \
--   multiqc \
--   fastq-screen \
--   r-base \
--   r-devtools \
--   r-dplyr \
--   r-knitr \
--   r-reshape \
--   r-reshape2 \
--   r-tidyr \
--   r-tidyverse \
--   r-kableextra \
--   r-jsonlite \
--   r-gridExtra \
--   r-rmarkdown \
--   r-knitr \
--   r-ggplot2 \
--   r-pheatmap \
--   r-cowplot \
--   r-plotly \
--   r-ranger \
--   r-optparse \
--   r-rcolorbrewer \
--   r-poiclaclu \
--   bioconductor-biocparallel \
--   bioconductor-tximport \
--   bioconductor-biomart \
--   bioconductor-deseq2 \
--   bioconductor-biobase \
--   bioconductor-vsn \
--   r-hexbin \
--   r-glmpca \
--   bioconductor-sva \
--   bioconductor-summarizedexperiment \
+  - star=2.7.6a
+-   bowtie2=2.4.2
+-   bcl2fastq=2.19.0
+-   salmon
+-   subread
+-   sambamba
+-   samtools
+-   qualimap
+-   rseqc
+-   picard
+-   fastqc
+-   multiqc
+-   fastq-screen
+-   r-base
+-   r-devtools
+-   r-dplyr
+-   r-knitr
+-   r-reshape 
+-   r-reshape2
+-   r-tidyr
+-   r-tidyverse
+-   r-kableextra
+-   r-jsonlite
+-   r-gridExtra
+-   r-rmarkdown
+-   r-knitr
+-   r-ggplot2
+-   r-pheatmap
+-   r-cowplot
+-   r-plotly
+-   r-ranger
+-   r-optparse
+-   r-rcolorbrewer
+-   r-poiclaclu
+-   bioconductor-biocparallel
+-   bioconductor-tximport
+-   bioconductor-biomart
+-   bioconductor-deseq2
+-   bioconductor-biobase
+-   bioconductor-vsn
+-   r-hexbin
+-   r-glmpca
+-   bioconductor-sva
+-   bioconductor-summarizedexperiment
 -   bioconductor-dupradar
